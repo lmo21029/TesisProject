@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title>chart - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+            var iframe_height = parseInt($('html').height());
+            window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Morris Charts Example</h3>
+            </div>
+        </div><!--/row-->
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="area-example" style="height: 300px;"></div>
+            </div>
+            <div class="col-md-12">
+                <div id="line-example" style="height: 300px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="donut-example" style="height: 250px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="bar-example" style="height: 250px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //Morris charts snippet - js
+
+    $.getScript('http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',function(){
+        $.getScript('http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js',function(){
+
+            Morris.Area({
+                element: 'area-example',
+                data: [
+                    { y: '1.1.', a: 100, b: 90 },
+                    { y: '2.1.', a: 75,  b: 65 },
+                    { y: '3.1.', a: 50,  b: 40 },
+                    { y: '4.1.', a: 75,  b: 65 },
+                    { y: '5.1.', a: 50,  b: 40 },
+                    { y: '6.1.', a: 75,  b: 65 },
+                    { y: '7.1.', a: 100, b: 90 }
+                ],
+                xkey: 'y',
+                ykeys: ['a', 'b'],
+                labels: ['Series A', 'Series B']
+            });
+
+            Morris.Line({
+                element: 'line-example',
+                data: [
+                    {year: '2010', value: 20},
+                    {year: '2011', value: 10},
+                    {year: '2012', value: 5},
+                    {year: '2013', value: 2},
+                    {year: '2014', value: 20}
+                ],
+                xkey: 'year',
+                ykeys: ['value'],
+                labels: ['Value']
+            });
+
+            Morris.Donut({
+                element: 'donut-example',
+                data: [
+                    {label: "Android", value: 12},
+                    {label: "iPhone", value: 30},
+                    {label: "Other", value: 20}
+                ]
+            });
+
+            Morris.Bar({
+                element: 'bar-example',
+                data: [
+                    {y: 'Jan 2014', a: 100},
+                    {y: 'Feb 2014', a: 75},
+                    {y: 'Mar 2014', a: 50},
+                    {y: 'Apr 2014', a: 75},
+                    {y: 'May 2014', a: 50},
+                    {y: 'Jun 2014', a: 75}
+                ],
+                xkey: 'y',
+                ykeys: ['a'],
+                labels: ['Visitors', 'Conversions']
+            });
+
+        });
+    });
+</script>
+</body>
+</html>

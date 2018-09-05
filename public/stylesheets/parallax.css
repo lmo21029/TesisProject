@@ -1,0 +1,9 @@
+body.login{
+    background-image: url('fondo1.png');
+    background-color: #444;
+    background-image: url('fondo2.png'),url('fondo3.png'),url('fondo1.png');
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
